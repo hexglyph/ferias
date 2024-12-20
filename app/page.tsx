@@ -12,7 +12,7 @@ export default function Page() {
   const [currentOption, setCurrentOption] = useState<'register' | 'view'>('register')
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    <>
       <Toaster position="top-right" />
       <Menu onSelectOption={setCurrentOption} currentOption={currentOption} />
       {currentOption === 'register' ? (
@@ -20,7 +20,7 @@ export default function Page() {
       ) : (
         <ViewVacationRequests />
       )}
-    </div>
+    </>
   )
 }
 
