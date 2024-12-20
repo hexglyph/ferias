@@ -1,0 +1,27 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["mongodb"]
+}
+
+model VacationRequest {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  name             String
+  employeeId       String
+  vacationPeriods  VacationPeriod[]
+  sellOneThird     Boolean
+  createdAt        DateTime @default(now())
+}
+
+model VacationPeriod {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  startDate         DateTime
+  duration          Int
+  vacationRequest   VacationRequest @relation(fields: [vacationRequestId], references: [id])
+  vacationRequestId String   @db.ObjectId
+}
+
