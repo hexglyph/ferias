@@ -11,7 +11,7 @@ export async function POST(request: Request) {
       data: {
         name: validatedData.name,
         employeeId: validatedData.employeeId,
-        sellOneThird: validatedData.sellOneThird,
+        sellOneThird: validatedData.sellOneThird ?? false,
         vacationPeriods: {
           create: validatedData.vacationPeriods.map(period => ({
             startDate: new Date(period.startDate),

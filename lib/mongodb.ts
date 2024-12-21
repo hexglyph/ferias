@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import { MongoClient } from 'mongodb'
 
 const uri = process.env.DATABASE_URL

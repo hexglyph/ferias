@@ -6,7 +6,7 @@ export async function saveVacationRequest(data: VacationFormData) {
     data: {
       name: data.name,
       employeeId: data.employeeId,
-      sellOneThird: data.sellOneThird,
+      sellOneThird: data.sellOneThird ?? false,
       vacationPeriods: {
         create: data.vacationPeriods.map(period => ({
           startDate: new Date(period.startDate),

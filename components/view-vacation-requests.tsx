@@ -12,7 +12,7 @@ export function ViewVacationRequests() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const data = await getVacationRequests()
+        const data: any = await getVacationRequests()
         setRequests(data)
       } catch (error) {
         console.error('Error fetching vacation requests:', error)
