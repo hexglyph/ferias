@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "vercel-build": "prisma generate && prisma db push && next build",
-    "build:css": "tailwindcss -i ./app/globals.css -o ./dist/output.css --watch"
+    "vercel-build": "prisma generate && prisma db push && next build"
   },
   "dependencies": {
     "@prisma/client": "^5.10.2",
