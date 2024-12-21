@@ -1,5 +1,5 @@
-import { VacationFormData } from './schema'
-import prisma from './prisma'
+import { VacationFormData } from '@/lib/schema'
+import prisma from '@/lib/prisma'
 
 export async function saveVacationRequest(data: VacationFormData) {
   const result = await prisma.vacationRequest.create({

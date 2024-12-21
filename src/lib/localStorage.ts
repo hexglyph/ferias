@@ -1,4 +1,4 @@
-import { VacationFormData } from './schema'
+import { VacationFormData } from '@/lib/schema'
 
 const STORAGE_KEY = 'vacation-requests'
 
