@@ -2,11 +2,9 @@
 
 import { useState } from 'react'
 import { VacationForm } from '@/components/vacation-form'
+import { ViewVacationRequests } from '@/components/view-vacation-requests'
 import { Menu } from '@/components/menu'
 import { Toaster } from 'react-hot-toast'
-import dynamic from 'next/dynamic'
-
-const ViewVacationRequests = dynamic(() => import('./view-requests/page'), { ssr: false })
 
 export default function Page() {
   const [currentOption, setCurrentOption] = useState<'register' | 'view'>('register')

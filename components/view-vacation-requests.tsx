@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { VacationFormData } from "@/lib/schema"
-import { getVacationRequests } from "@/lib/db"
 
 export function ViewVacationRequests() {
   const [requests, setRequests] = useState<VacationFormData[]>([])
@@ -12,7 +11,11 @@ export function ViewVacationRequests() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const data: any = await getVacationRequests()
+        const res = await fetch('/api/vacation-requests')
+        if (!res.ok) {
+          throw new Error('Failed to fetch vacation requests')
+        }
+        const data = await res.json()
         setRequests(data)
       } catch (error) {
         console.error('Error fetching vacation requests:', error)
@@ -43,14 +46,14 @@ export function ViewVacationRequests() {
         {requests.length === 0 ? (
           <p>Nenhuma solicitação de férias cadastrada.</p>
         ) : (
-          requests.map((request, index) => (
-            <div key={index} className="mb-4 p-4 border rounded-md">
+          requests.map((request) => (
+            <div key={request.employeeId} className="mb-4 p-4 border rounded-md">
               <p><strong>Nome:</strong> {request.name}</p>
               <p><strong>ID do Funcionário:</strong> {request.employeeId}</p>
               <p><strong>Períodos de Férias:</strong></p>
               <ul className="list-disc pl-5">
-                {request.vacationPeriods.map((period, periodIndex) => (
-                  <li key={periodIndex}>
+                {request.vacationPeriods.map((period, index) => (
+                  <li key={index}>
                     Início: {new Date(period.startDate).toLocaleDateString()}, Duração: {period.duration} dias
                   </li>
                 ))}
