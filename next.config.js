@@ -1,6 +1,4 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
     if (isServer) {
@@ -8,6 +6,6 @@ const nextConfig: NextConfig = {
     }
     return config
   },
-};
+}
 
-export default nextConfig;
+module.exports = nextConfig
